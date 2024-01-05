@@ -1,45 +1,53 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import RegisterPage from './RegisterPage';
 
 const LoginPage = () => {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handleUsernameChange = (event) => {
-      setUsername(event.target.value);
-    };
-    const handlePasswordChange = (event) => {
-      setUsername(event.target.value);
-    };
-   
-    const handleSubmit = (event) => {
-      event.preventDefault();
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-      console.log ('username', username);
-      console.log('password', password);
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-      setUsername ('');
-      setPassword ('');
-}
-  
-  
+    console.log('username', username);
+    console.log('password', password);
 
+    setUsername('');
+    setPassword('');
+  }
   return (
     <div className='container'>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-      </form>
+      <div className='border p-4 m-5'>
+        <h1>Login Page</h1>
+        <form onSubmit={handleSubmit} className=' '>
+          <div class="mb-3">
+            <label class="col-sm-2 col-form-label" >Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  placeholder="@email.com" value={username} onChange={handleUsernameChange}/>
+            </div>
+
+          </div>
+          <div class="mb-3">
+            <label class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control"  placeholder="password" value={password} onChange={handlePasswordChange} />
+            </div>
+        
+         <Link to="/Register">Registered</Link>
+        
+          
+          </div>
+          <button type="submit" className='btn btn-primary'>Login</button>
+        </form>
+      </div>
     </div>
   );
 };
